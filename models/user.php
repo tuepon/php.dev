@@ -8,7 +8,11 @@ class UserModel extends Model{
     $password = md5($post['password']);
 
     if($post['submit']){
-      //die('SUBMITTED');
+      if($post['name'] == '' || $post['email'] == '' || $post['password'] == ''){
+        Messages::setMsg('Please Fill In All Fields', 'error');
+        return;
+      }
+
       // Insert into MySQL
       $this->query('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
       $this->bind(':name', $post['name']);
@@ -32,7 +36,6 @@ class UserModel extends Model{
     $password = md5($post['password']);
 
     if($post['submit']){
-      //die('SUBMITTED');
       // Compare Login
       $this->query('SELECT * FROM users WHERE email = :email AND password = :password');
       $this->bind(':email', $post['email']);
@@ -49,7 +52,7 @@ class UserModel extends Model{
         );
         header('Location: '.ROOT_URL.'shares');
       } else {
-        echo 'Incorrect Login';
+        Messages::setMsg('Incorrect Login', 'error');
       }
     }
     return;

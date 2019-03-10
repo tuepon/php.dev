@@ -31,6 +31,7 @@
 
   <main role="main" class="container">
     <div>
+      <?php Messages::display(); ?>
       <?php require($view); ?>
     </div>
   </main><!-- /.container -->
