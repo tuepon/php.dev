@@ -30,4 +30,23 @@ class ShareModel extends Model{
       return;
     }
   }
+
+  public function update(){
+    // Sanitize POST
+    $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+    if($post['submit']){
+      if($post['title'] == '' || $post['body'] == '' || $post['link'] == ''){
+        Messages::setMsg('Please Fill In All Fields', 'error');
+        return;
+      }
+      // Update MySQL
+      $this->query('UPDATE shares SET title = :title, body = :body, link = :link WHERE id = :id');
+      $this->bind(':title', $post['title']);
+      $this->bind(':body', $post['body']);
+      $this->bind(':link', $post['link']);
+      $this->bind(':id', $post['id']);
+      $this->execute();
+    }
+  }
 }

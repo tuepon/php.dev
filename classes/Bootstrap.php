@@ -8,12 +8,12 @@ class Bootstrap{
     $this->request = $request;
     if($this->request['controller'] == ""){
       $this->controller = 'home';
-    } else{
+    } else {
       $this->controller = $this->request['controller'];
     }
     if($this->request['action'] == ""){
       $this->action = 'index';
-    } else{
+    } else {
       $this->action = $this->request['action'];
     }
   }
@@ -33,7 +33,7 @@ class Bootstrap{
           } 
         } else {
           // base controller does not exist
-          echo '<h1>Base controller not foun</h1>';
+          echo '<h1>Base controller not found</h1>';
           return;
         }
       } else {

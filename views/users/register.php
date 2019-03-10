@@ -1,9 +1,7 @@
 <div class="card" style="width: auto">
-  <div class="card-body">
+  <div class="card-header">
     <h3 class="card-title">Register User</h3>
   </div>
-</div>
-<div class="card">
   <div class="card-body">
     <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
       <div class="form-group">
