@@ -31,15 +31,11 @@ class ShareModel extends Model{
     }
   }
 
-  public function update(){
+  public function edit($id){
     // Sanitize POST
     $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
     if($post['submit']){
-      if($post['title'] == '' || $post['body'] == '' || $post['link'] == ''){
-        Messages::setMsg('Please Fill In All Fields', 'error');
-        return;
-      }
       // Update MySQL
       $this->query('UPDATE shares SET title = :title, body = :body, link = :link WHERE id = :id');
       $this->bind(':title', $post['title']);

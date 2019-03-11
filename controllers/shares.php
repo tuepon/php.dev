@@ -13,11 +13,11 @@ class Shares extends Controller{
     $this->ReturnView($viewmodel->add(), true);
   }
 
-  protected function update(){
+  protected function edit(){
     if(!isset($_SESSION['is_logged_in'])){
       header('Location: '.ROOT_URL.'shares');
     }
     $viewmodel = new ShareModel();
-    $this->ReturnView($viewmodel->update(), true);
+    $this->ReturnView($viewmodel->edit(), true);
   }
 }
